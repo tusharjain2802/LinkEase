@@ -56,6 +56,7 @@ app.get("/:no",(req,res)=>{
     const enc = req.params.no;
     Link.findOne({shorten:enc}).then(data => {
         if(data){
+            res.redirect(data.original);
         }else{
             res.redirect("/error");
         }
