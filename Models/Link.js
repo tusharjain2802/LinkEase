@@ -14,7 +14,7 @@ const linkSchema = new mongoose.Schema({
         required:true
     },
     createdAt: { type: Date, 
-        expires:60*60*48, 
+        expires:60*60*48*1000, 
         default: Date.now 
     }
 });
