@@ -12,6 +12,10 @@ const linkSchema = new mongoose.Schema({
     visits:{
         type:Number,
         required:true
+    },
+    createdAt: { type: Date, 
+        expires:20, 
+        default: Date.now 
     }
 });
 

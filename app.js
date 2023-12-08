@@ -34,8 +34,6 @@ app.set('view engine', 'ejs');
 app.use('/auth', routes);
 app.use('/', homeroutes);
 
-
-
 app.listen(port, () => {
     console.log(`listening on http://localhost:${port}`)
 })
