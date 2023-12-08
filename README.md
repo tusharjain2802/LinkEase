@@ -4,7 +4,7 @@ LinkEase is a URL shortening application designed to simplify link management an
 
 ## Features
 
-- **Easy Login**: Securely log in to access URL shortening and analytics features.
+- **Easy Register**: Register in to access URL shortening and analytics features.
 - **Logout**: Logout securely after using the application.
 - **One-Click Link Shortening**: Shorten URLs with a single click for easy sharing.
 - **Fully Secure Website**: Requires login for URL shortening, ensuring privacy and security.
@@ -31,8 +31,19 @@ LinkEase is a URL shortening application designed to simplify link management an
    ```bash
    git clone https://github.com/tusharjain2802/LinkEase.git
 
-1. Install dependencies:
+2. Install dependencies:
 
    ```bash
    cd LinkEase
    npm install
+
+3. Run the application:
+
+   ```bash
+   node app.js
+
+4. Access the application at http://localhost:3000/
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request for any improvements or features.
