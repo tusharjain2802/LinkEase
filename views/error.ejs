@@ -1,0 +1,44 @@
+<!-- error.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Error</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">URL Shortener</h1>
+      <div class="auth">
+        <a href="/"><button id="loginBtn">Go Back</button></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div>
+        <h2>URL is incorrect</h2>
+        <p class="checkLink">Please check your link.</p>
+      </div>    
+  </main>
+  <%- include("partials/footer") -%>
+
+<script></script>
+</body>
+<style>
+h2 {
+  font-size: 3rem;
+  color: #333; 
+  text-align: center; 
+  margin-top: 50px; 
+}
+
+.checkLink{
+  font-size: 1.5rem; 
+  color: #666; 
+  text-align: center; 
+  margin-bottom: 50px; 
+}
+</style>
+</html>

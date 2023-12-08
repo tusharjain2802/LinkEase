@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - URL Shortener</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">URL Shortener</h1>
+      <div class="auth">
+        <a href="/auth/register"><button id="logoutBtn">Register</button></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="auth-form">
+        <h2>Login</h2>
+        <form id="loginForm" action="/auth/login" method="post">
+
+          <div class="alert">
+            <p style="color: red;"><%= message %></p>
+          </div>
+          
+          <input name="email" type="text" id="username" placeholder="Email" required>
+          <input name="password" type="password" id="password" placeholder="Password" required>
+          <div><button class="loginBut" type="submit">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <%- include("partials/footer") -%>
+
+  <script></script>
+</body>
+<style>
+  input{
+    margin-top: 12px;
+  }
+  .loginBut{
+    margin-top: 12px;
+  }
+</style>
+</html>

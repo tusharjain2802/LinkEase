@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>URL Shortener</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">URL Shortener</h1>
+      <div class="auth">
+        <a href="/auth/logout"><button id="loginBtn">LogOut</button></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="content">
+        <form id="registerForm" action="/shorten" method="post">
+        <div class="input-section">
+          <input name="original" type="text" id="originalUrl" placeholder="Enter URL">
+          <button>Shorten</button>
+        </div>
+      </form>
+        <div class="instructions">
+          <p>To use this URL shortener:</p>
+          <ol>
+            <li>Enter your long URL in the input field on the left.</li>
+            <li>Click the "Shorten" button.</li>
+            <li>Your shortened URL will appear below.</li>
+          </ol>
+        </div>
+        <a href=<%= message %>><div id="shortenedUrl" class="shortened-url">
+          <p style="color: red;"><%= message %></p></div></a>
+      </div>
+    </div>
+  </main>
+
+  <%- include("partials/footer") -%>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - URL Shortener</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">URL Shortener</h1>
+      <div class="auth">
+        <a href="/auth/login"><button id="loginBtn">Login</button></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="auth-form">
+        <h2>Register</h2>
+        <form id="registerForm" action="/auth/register" method="post">
+      
+            <div class="alert">
+              <p style="color: red;"><%= message %></p>
+            </div>
+     
+          <input name="username" type="text" id="username" placeholder="Name" required>
+          <input name="email" type="email" id="email" placeholder="Email" required>
+          <input name="password" type="password" id="password" placeholder="Password" required>
+          <div><button class="regBut" type="submit">Register</button></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <%- include("partials/footer") -%>
+
+  <script></script>
+</body>
+<style>
+  input{
+    margin-top: 12px;
+  }
+  .regBut{
+    margin-top: 12px;
+  }
+</style>
+</html>
