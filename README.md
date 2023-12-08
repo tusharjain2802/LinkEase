@@ -7,6 +7,7 @@ LinkEase is a URL shortening application designed to simplify link management an
 - **Easy Register**: Register in to access URL shortening and analytics features.
 - **Logout**: Logout securely after using the application.
 - **One-Click Link Shortening**: Shorten URLs with a single click for easy sharing.
+- **Self-Destructing Links**: Shorten URLs get self destructed within 48 hours (2 days).
 - **Fully Secure Website**: Requires login for URL shortening, ensuring privacy and security.
 - **Analytics Portal**: View analytics for all shortened URLs, including the number of visits.
 

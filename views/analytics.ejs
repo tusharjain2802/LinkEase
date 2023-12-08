@@ -21,6 +21,7 @@
               <th>Original Link</th>
               <th>Shortened Link</th>
               <th>Visits</th>
+              <th>Time Remaining (To Expire)</th>
             </tr>
           </thead>
           <tbody id="links-table">
@@ -28,8 +29,17 @@
             <% allLinks.forEach(function(link){ %>
                 <tr>
                     <td><a href=<%= link.original %>><%= link.original %></a></td>
-                   <td> <a href=https://linkease-kof4.onrender.com/<%= link.shorten %>>https://linkease-kof4.onrender.com/<%= link.shorten %></a></td>
+                    <td> <a href=https://linkease-kof4.onrender.com/<%= link.shorten %>>https://linkease-kof4.onrender.com/<%= link.shorten %></a></td>
                     <td><%= link.visits %></td>
+                    <% var millisec = (60*60*48*1000) - link.createdAt.getTime() - Date.now(); %>
+                    <% var sec = Math.floor(millisec / 1000); %>
+                    <% var min = Math.floor(sec / 60); %>
+                    <% var hours = Math.floor(min/ 60); %>
+                    <% var sec = sec % 60; %>
+                    <% var min = min % 60; %>
+                    <% var day = Math.floor(hours/24); %>
+                    <% var hours = hours % 24; %>
+                    <td> <%= day%>d <%= hours%>hr <%= min%>m <%= sec%>s</td>
                 </tr>
             <% }) %>
 
