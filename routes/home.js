@@ -25,6 +25,12 @@ app.get("/error",function(req,res){
     res.render("error");
 });
 
+app.get("/analytics",function(req,res){
+    Link.find({}).then(links=>{
+        res.render("analytics",{allLinks:links});
+    });
+});
+
 app.post("/shorten",function(req,res){
     const original = req.body.original;
 

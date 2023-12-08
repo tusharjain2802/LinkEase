@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Analytics - linkEase</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+          <h1 class="logo">linkEase : URL Shortener</h1>
+          <div class="auth">
+            <h3 id="logoutBtn">Analytics</h3>
+          </div>
+        </div>
+    </header>
+    <main>
+        <table>
+          <thead>
+            <tr>
+              <th>Original Link</th>
+              <th>Shortened Link</th>
+              <th>Visits</th>
+            </tr>
+          </thead>
+          <tbody id="links-table">
+            
+            <% allLinks.forEach(function(link){ %>
+                <tr>
+                    <td><a href=<%= link.original %>><%= link.original %></a></td>
+                   <td> <a href=https://linkease-kof4.onrender.com/<%= link.shorten %>>https://linkease-kof4.onrender.com/<%= link.shorten %></a></td>
+                    <td><%= link.visits %></td>
+                </tr>
+            <% }) %>
+
+          </tbody>
+        </table>
+      </main>
+
+  <%- include("partials/footer") -%>
+
+  <script></script>
+</body>
+<style>
+table {
+  width: 90%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+</style>
+</html>

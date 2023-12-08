@@ -8,7 +8,7 @@
 <body>
   <header>
     <div class="container">
-      <h1 class="logo">URL Shortener</h1>
+      <h1 class="logo">linkEase</h1>
       <div class="auth">
         <a href="/auth/logout"><button id="loginBtn">LogOut</button></a>
       </div>
@@ -32,8 +32,11 @@
             <li>Your shortened URL will appear below.</li>
           </ol>
         </div>
-        <a href=<%= message %>><div id="shortenedUrl" class="shortened-url">
-          <p style="color: red;"><%= message %></p></div></a>
+        <% if(message){ %>
+        <a style="text-decoration: none;" href=<%= message %>><div id="shortenedUrl" class="shortened-url">
+          <h3>Your shortened Link is :</h3>
+          <p style="color: red; ">https://linkease-kof4.onrender.com/<%= message %></p></div></a>
+          <% } %>
       </div>
     </div>
   </main>
