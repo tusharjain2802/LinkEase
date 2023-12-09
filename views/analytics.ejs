@@ -28,8 +28,8 @@
             
             <% allLinks.forEach(function(link){ %>
                 <tr>
-                    <td><a href=<%= link.original %>><%= link.original %></a></td>
-                    <td> <a href=https://linkease-kof4.onrender.com/<%= link.shorten %>>https://linkease-kof4.onrender.com/<%= link.shorten %></a></td>
+                    <td><a target="_blank" href=<%= link.original %>><%= link.original %></a></td>
+                    <td> <a target="_blank" href=/<%= link.shorten %>>https://linkease-kof4.onrender.com/<%= link.shorten %></a></td>
                     <td><%= link.visits %></td>
                     <% var millisec = (60*60*48*1000) + link.createdAt.getTime() - Date.now(); %>
                     <% var sec = Math.floor(millisec / 1000); %>
