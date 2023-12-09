@@ -10,7 +10,7 @@
     <div class="container">
       <h1 class="logo">linkEase</h1>
       <div class="auth">
-        <a href="/auth/logout"><button id="loginBtn">LogOut</button></a>
+        <a href="/auth/logout"><button id="logOutBtn">LogOut</button></a>
       </div>
     </div>
   </header>
@@ -20,6 +20,7 @@
       <div class="content">
         <form id="registerForm" action="/shorten" method="post">
         <div class="input-section">
+          <input style="display: none;" name="email" type="text" id="email"  placeholder="Enter URL">
           <input name="original" type="text" id="originalUrl" placeholder="Enter URL">
           <button>Shorten</button>
         </div>
@@ -38,9 +39,68 @@
           <p style="color: red; ">https://linkease-kof4.onrender.com/<%= message %></p></div></a>
           <% } %>
       </div>
+      <% if(allLinks){ %>
+      <table>
+        <thead>
+          <tr>
+            <th>Original Link</th>
+            <th>Shortened Link</th>
+            <th>Visits</th>
+            <th>Time Remaining (To Expire)</th>
+          </tr>
+        </thead>
+        <tbody id="links-table">
+          <% allLinks.forEach(function(link){ %>
+              <tr>
+                  <td><a href=<%= link.original %>><%= link.original %></a></td>
+                  <td> <a href=https://linkease-kof4.onrender.com/<%= link.shorten %>>https://linkease-kof4.onrender.com/<%= link.shorten %></a></td>
+                  <td><%= link.visits %></td>
+                  <% var millisec = (60*60*48*1000) + link.createdAt.getTime() - Date.now(); %>
+                  <% var sec = Math.floor(millisec / 1000); %>
+                  <% var min = Math.floor(sec / 60); %>
+                  <% var hours = Math.floor(min/ 60); %>
+                  <% var sec = sec % 60; %>
+                  <% var min = min % 60; %>
+                  <% var day = Math.floor(hours/24); %>
+                  <% var hours = hours % 24; %>
+                  <td> <%= day%>d <%= hours%>hr <%= min%>m <%= sec%>s</td>
+              </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
     </div>
   </main>
 
   <%- include("partials/footer") -%>
+
+  <script>
+    const itemname = JSON.parse(localStorage.getItem('token'));
+    document.getElementById("email").setAttribute('value',itemname.email);
+
+    document.getElementById('logOutBtn').onclick = function() {
+      localStorage.removeItem('token');
+  };
+  </script>
 </body>
+<style>
+  table {
+    width: 90%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  </style>
 </html>

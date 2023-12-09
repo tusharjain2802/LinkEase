@@ -27,7 +27,7 @@
           
           <input name="email" type="text" id="username" placeholder="Email" required>
           <input name="password" type="password" id="password" placeholder="Password" required>
-          <div><button class="loginBut" type="submit">Login</button>
+          <div><button id="myButton" class="loginBut" type="submit">Login</button>
           </div>
         </form>
       </div>
@@ -36,7 +36,13 @@
 
   <%- include("partials/footer") -%>
 
-  <script></script>
+  <script>
+    document.getElementById('myButton').onclick = function() {
+    var email = document.getElementById('username').value;
+    localStorage.setItem('token',JSON.stringify({email}));
+  };
+    
+  </script>
 </body>
 <style>
   input{

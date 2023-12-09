@@ -18,7 +18,7 @@ app.get("/",function(req,res){
     if (!req.session.user) {
       res.redirect('/auth/login'); 
     } else {
-      res.render('index', {message:""});
+      res.render('index', {message:"", allLinks:null});
     }
 });
 app.get("/error",function(req,res){
@@ -34,25 +34,31 @@ app.get("/analytics",function(req,res){
 app.post("/shorten",function(req,res){
     const original = req.body.original;
 
-    function generateShortUrl(originalUrl) {
-        const hash = crypto.createHash('sha256').update(originalUrl).digest('base64');
-        const cleanHash = hash.replace(/[^a-zA-Z0-9]/g, '');
-        const shortUrl = cleanHash.substring(0, 8);
-        return shortUrl;
+    function generateShortUrl() {
+        let result = '';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+        for (let i = 0; i < 7; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
     }
-    const shortUrl = generateShortUrl(original);
+    const shortUrl = generateShortUrl();
     const bool = Link.findOne({shorten:shortUrl}).then(data => {
         if(data){
             res.render("index",{message:"Unable to shorten the link! Try Again."} );
         }
         else{
             const link = new Link({
+                email:req.body.email,
                 original:original,
                 shorten:shortUrl,
                 visits:0
             });
             link.save();
-            res.render("index",{message:shortUrl});
+            Link.find({email:req.body.email}).then(links=>{
+            res.render("index",{message:shortUrl, allLinks:links});
+        });
         }
     });
     
